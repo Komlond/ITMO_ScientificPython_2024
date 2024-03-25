@@ -52,7 +52,7 @@ def parse_response_ensembl(response):
 
 
 uniprot_regex = re.compile(r'^[OPQ][0-9][A-Z0-9]{3}[0-9]$|^[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2}$')
-ensembl_regex = re.compile(r'^ENS\w{0,}(\d{11})$')
+ensembl_regex = re.compile(r'^ENS\w{1,6}(\d{11})$')
 
 
 def fetch_and_parse(ids):
