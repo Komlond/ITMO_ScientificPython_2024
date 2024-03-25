@@ -52,7 +52,7 @@ def parse_response_ensembl(response):
 
 
 uniprot_regex = re.compile(r'^[OPQ][0-9][A-Z0-9]{3}[0-9](\-\d+)?$')
-ensembl_regex = re.compile(r'^EN\w{11}$')
+ensembl_regex = re.compile(r'^ENS\w{0,}(\d{11})$')
 
 
 def fetch_and_parse(ids):
@@ -63,6 +63,8 @@ def fetch_and_parse(ids):
         database = "UniProt"
     elif ensembl_match:
         database = "ENSEMBL"
+    else:
+        database = None
 
     if database == "UniProt":
         get_function = get_uniprot
@@ -70,6 +72,8 @@ def fetch_and_parse(ids):
     elif database == "ENSEMBL":
         get_function = get_ensembl
         parse_function = parse_response_ensembl
+    else:
+        raise ValueError("No fitting database found")
 
     response = get_function(ids)
     parsed_data = parse_function(response)
