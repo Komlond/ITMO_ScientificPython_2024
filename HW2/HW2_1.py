@@ -51,7 +51,7 @@ def parse_response_ensembl(response):
     return parsed_data
 
 
-uniprot_regex = re.compile(r'^[OPQ][0-9][A-Z0-9]{3}[0-9](\-\d+)?$')
+uniprot_regex = re.compile(r'^[OPQ][0-9][A-Z0-9]{3}[0-9]$|^[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2}$')
 ensembl_regex = re.compile(r'^ENS\w{0,}(\d{11})$')
 
 
