@@ -12,6 +12,7 @@ class IncreaseSpeed:
 
     def __next__(self):
         if self.car.current_speed >= self.max_speed:
+            self.car.current_speed = self.max_speed
             raise StopIteration
         else:
             self.car.current_speed += 10
@@ -27,6 +28,7 @@ class DecreaseSpeed:
 
     def __next__(self):
         if self.car.current_speed <= 0:
+            self.car.current_speed = 0
             raise StopIteration
         else:
             self.car.current_speed -= 10
